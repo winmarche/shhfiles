@@ -1,0 +1,60 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+
+=pod
+
+=head1 Show Or Hide Hidden Files By Winston M. Cheng 2015
+
+The script is designed to show or hide hidden files and folders on OS X,
+which is known to be quite difficult for the average user when compared
+to Windows, which can be done with a few clicks. The script will execute
+the commands on Terminal which normally requires users to manually type
+them out. This would make it more convinient for the user.
+
+=head2 Requirements
+
+This script is designed for OS X 10.9 Mavericks and above.
+
+=cut
+
+sub showfiles
+{
+	print `defaults write com.apple.finder AppleShowAllFiles YES`;
+	print `killall Finder`;
+}
+
+sub hidefiles
+{
+	print `defaults write com.apple.finder AppleShowAllFiles NO`;
+	print `killall Finder`;
+}
+
+my $ans = "";
+while($ans !~ /(exit|cancel|x|c)/i)
+{
+	print "Hide or Show hidden files (s/h): ";
+	$ans = <>;
+	last if $ans =~ /(exit|cancel|x|c)/i;
+	if($ans =~ /\S/)
+	{
+		if($ans =~ /(hide|h)/i)
+		{
+			&hidefiles;
+			last;
+		}
+		elsif($ans =~ /(show|s)/i)
+		{
+			&showfiles;
+			last;
+		}
+		else
+		{
+			print "Not a valid option.\n";
+		}
+	}
+	else
+	{
+		print "Not a valid option.\n"
+	}
+}
