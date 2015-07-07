@@ -4,17 +4,11 @@ use strict;
 
 =pod
 
-=head1 Show Or Hide Hidden Files By Winston M. Cheng 2015
+=head1 shhfiles (Show Or Hide Hidden Files) By Winston M. Cheng 2015
 
-The script is designed to show or hide hidden files and folders on OS X,
-which is known to be quite difficult for the average user when compared
-to Windows, which can be done with a few clicks. The script will execute
-the commands on Terminal which normally requires users to manually type
-them out. This would make it more convinient for the user.
-
-=head2 Requirements
-
-This script is designed for OS X 10.9 Mavericks and above.
+The script is designed to conviniently show or hide hidden files and
+folders on OS X, by executing the commands on Terminal which normally
+requires users to manually type them out. Users just type s or h.
 
 =cut
 
