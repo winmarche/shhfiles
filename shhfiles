@@ -41,21 +41,21 @@ my $opt = "";   #Variable to store user's input for their choices
 while($opt !~ /(exit|cancel|x|c)/i)
 {
 	print "Show or Hide hidden files and folders (s/h): ";
-    $opt = <>;      #Obtains user input
+	$opt = <>;      #Obtains user input
 
 	last if $opt =~ /^(exit|cancel|x|c)$/i; #Exits when these are entered
-	
+
 	if($opt =~ /^(hide|h)$/i)
 	{
-        #Will hide hidden files and folders
-        hidefiles;
-        print "Files and folders are now hidden.\n";
-    }
+		#Will hide hidden files and folders
+		hidefiles;
+		print "Files and folders are now hidden.\n";
+	}
 	elsif($opt =~ /^(show|s)$/i)
 	{
-        #Will show hidden files and folders
+	    #Will show hidden files and folders
 		showfiles;
-        print "Files and folders are now shown.\n";
+		print "Files and folders are now shown.\n";
 	}
 	else
 	{
