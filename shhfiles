@@ -4,51 +4,61 @@ use strict;
 
 =pod
 
-=head1 shhfiles (Show Or Hide Hidden Files) By Winston M. Cheng 2015
+=head1 shhfiles (Show Or Hide Hidden Files) 2.0 By Winston Mark Cheng (c)2016
 
 The script is designed to conviniently show or hide hidden files and
 folders on OS X, by executing the commands on Terminal which normally
-requires users to manually type them out. Users just type s or h.
+requires users to manually type them out. Users can just type s or h.
 
 =cut
 
+
+=pod
+
+=head1 showfiles subroutine
+
+Used to run the command to show hidden files and folders and reset Finder.
+=cut
 sub showfiles
 {
-	print `defaults write com.apple.finder AppleShowAllFiles YES`;
-	print `killall Finder`;
+	print `defaults write com.apple.finder AppleShowAllFiles YES;killall Finder`;
 }
 
+=pod
+
+=head1 hidefiles subroutine
+
+Used to run the command to hide hidden files and folders and reset Finder.
+=cut
 sub hidefiles
 {
-	print `defaults write com.apple.finder AppleShowAllFiles NO`;
-	print `killall Finder`;
+	print `defaults write com.apple.finder AppleShowAllFiles NO;killall Finder`;
 }
 
-my $ans = "";
-while($ans !~ /(exit|cancel|x|c)/i)
+my $opt = "";   #Variable to store user's input for their choices
+
+#The loop askes users for a valid input such as s, h or x to run the right option
+while($opt !~ /(exit|cancel|x|c)/i)
 {
-	print "Hide or Show hidden files (s/h): ";
-	$ans = <>;
-	last if $ans =~ /(exit|cancel|x|c)/i;
-	if($ans =~ /\S/)
+	print "Show or Hide hidden files and folders (s/h): ";
+    $opt = <>;      #Obtains user input
+
+	last if $opt =~ /^(exit|cancel|x|c)$/i; #Exits when these are entered
+	
+	if($opt =~ /^(hide|h)$/i)
 	{
-		if($ans =~ /(hide|h)/i)
-		{
-			&hidefiles;
-			last;
-		}
-		elsif($ans =~ /(show|s)/i)
-		{
-			&showfiles;
-			last;
-		}
-		else
-		{
-			print "Not a valid option.\n";
-		}
+        #Will hide hidden files and folders
+        hidefiles;
+        print "Files and folders are now hidden.\n";
+    }
+	elsif($opt =~ /^(show|s)$/i)
+	{
+        #Will show hidden files and folders
+		showfiles;
+        print "Files and folders are now shown.\n";
 	}
 	else
 	{
-		print "Not a valid option.\n"
+		print "Not a valid option.\n";
 	}
 }
