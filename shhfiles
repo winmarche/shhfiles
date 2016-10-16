@@ -7,7 +7,7 @@ use strict;
 =head1 shhfiles (Show Or Hide Hidden Files) 2.0 By Winston Mark Cheng (c)2016
 
 The script is designed to conviniently show or hide hidden files and
-folders on OS X, by executing the commands on Terminal which normally
+folders on macOS, by executing the commands on Terminal which normally
 requires users to manually type them out. Users can just type s or h.
 
 =cut
