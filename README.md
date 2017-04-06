@@ -1,4 +1,4 @@
-#shhfiles (Show Or Hide Hidden Files)
+# shhfiles (Show Or Hide Hidden Files)
 
 Description
 -----------
